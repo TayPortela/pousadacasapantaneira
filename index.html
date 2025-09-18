@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pousada Casa Pantaneira</title>
+  <style>
+    /* ====== RESET ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* efeito de rolagem suave */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ====== HEADER ====== */
+    header {
+      background-color: #004b2d; /* verde escuro */
+      color: white;
+      padding: 10px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header .logo img {
+      height: 50px;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 26px;
+    }
+
+    nav {
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      background: white;
+      color: #004b2d;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+    }
+
+    nav a {
+      padding: 10px 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    nav a:hover {
+      background: #004b2d;
+      color: #ffffff;
+    }
+
+    /* ====== HERO SECTION ====== */
+    .hero {
+      background: url('img/pousada1.JPEG') no-repeat center center/cover; /* sua imagem */
+      min-height: 100vh; /* ocupa tela toda */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: #ffffff;
+      padding: 40px 20px;
+    }
+
+    /* camada escura por cima da imagem */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      background: rgba(0,0,0,0.5); /* ajusta aqui para mais/menos escuro */
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* centraliza tudo dentro */
+      justify-content: center;
+    }
+
+    .hero-logo {
+      width: 300px; /* aumenta o tamanho do logo */
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto; /* centraliza horizontalmente */
+    }
+
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-hero {
+      display: inline-block;
+      background: #007b5e;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-hero:hover {
+      background: #005f46;
+    }
+
+    /* ====== BUTTON SECTIONS ====== */
+    .buttons-section {
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+
+    .buttons-section a {
+      background-color: #004b2d;
+      color: white;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background .3s;
+    }
+
+    .buttons-section a:hover {
+      background-color: #046b3f;
+    }
+
+    /* ====== SOBRE A POUSADA ====== */
+    #sobre {
+      background: white;
+      padding: 30px 20px;
+    }
+
+    #sobre h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #004b2d;
+    }
+
+    #sobre p {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Botão dentro da seção sobre */
+    
+    .btn-sobre-container {
+      text-align: center; /* centraliza conteúdo inline-block */
+      margin-top: 20px; /* espaço acima do botão */
+    }
+
+    /* estilo do botão */
+    .btn-sobre {
+      display: inline-block;
+      background-color: #007b5e; /* verde do seu site */
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-sobre:hover {
+      background-color: #005f46; /* mais escuro no hover */
+    }
+
+
+    /* ====== MAP SECTION ====== */
+    .map {
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: #004b2d; /* mesma cor do menu, ajuste conforme seu menu */
+      color: #ffffff; /* texto branco */
+      text-align: center; /* centraliza o texto */
+      padding: 15px 10px; /* espaço interno */
+      font-size: 14px; /* opcional */
+    }
+
+    footer a {
+      color: #ffffff; /* link branco */
+      text-decoration: underline; /* sublinhado opcional */
+    }
+
+    footer a:hover {
+      color: #f3eb07; /* muda cor ao passar o mouse */
+    }
+
+
+    /* ====== RESPONSIVE ====== */
+    @media(min-width: 768px) {
+      .buttons-section {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .buttons-section a {
+        width: 30%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <body id="topo">
+
+  <!-- HEADER -->
+  <header>
+    <a href="#topo">
+    <img src="img/logo_casaPantaneira.png" alt="Pousada Casa Pantaneira" class="logo">
+  </a>  
+
+    <button class="menu-btn">&#9776;</button>
+    <nav>
+      <a href="#sobre">Sobre a Pousada</a>
+      <a href="https://wa.me/5566999181900" target="_blank">Contato WhatsApp</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <img src="img/logo_casaPantaneira1.png" alt="Logo Pousada Casa Pantaneira" class="hero-logo">
+      <p>O lugar ideal para a sua pescaria no Pantanal</p>
+      <a href="https://wa.me/5566999181900" class="btn-hero">Agendar pescaria pelo WhatsApp</a>
+    </div>
+  </section>
+
+
+  <!-- BUTTONS -->
+  <section class="buttons-section">
+    <a href="LINK_PASTA_DRIVE_ESTRUTURA" target="_blank">Galeria da Estrutura</a>
+    <a href="LINK_PASTA_DRIVE_PESCARIAS" target="_blank">Galeria de Pescarias</a>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <h2>Sobre a Pousada</h2>
+    <p>
+      Somos uma pousada de pesca localizada no <strong>Rio São Lourenço</strong>, no Mato Grosso.
+      Oferecemos <strong>comidas típicas</strong> da região e um <strong>serviço completo de pesca</strong>
+      para que você aproveite o melhor do Pantanal com conforto e tradição.
+    </p>
+    <div class="btn-sobre-container">
+      <a href="https://wa.me/5566999181900" class="btn-sobre">Agendar pescaria pelo WhatsApp</a>
+  </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map">
+    <h2>Como chegar</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.813263111432!2d-55.5516988!3d-16.736166699999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93829faf09fae3af%3A0x2e067ada6a259196!2sPousada%20Casa%20Pantaneira!5e0!3m2!1spt-BR!2sbr!4v1758156069373!5m2!1spt-BR!2sbr" 
+        width="600"
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <footer>
+    Todos os direitos reservados a Pousada Casa Pantaneira © 2025 <br>
+    Site desenvolvido por 
+    <a href="https://www.leadsmidiasdigitais.com" target="_blank">
+      Leads Mídias Digitais
+    </a>
+  </footer>
+
+  <script>
+    // Toggle menu hambúrguer
+    const menuBtn = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav');
+
+    menuBtn.addEventListener('click', () => {
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Fechar menu ao clicar em um link (melhor UX)
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
