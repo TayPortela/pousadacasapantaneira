@@ -1,352 +1,661 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pousada Casa Pantaneira</title>
-  <style>
-    /* ====== RESET ====== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+   <meta name="description" content="Pescaria esportiva no Pantanal, no Rio São Lourenço. Conheça a experiência, a estrutura e os sabores da Pousada Casa Pantaneira.">
+   <title>Pousada Casa Pantaneira | Pesca esportiva no Pantanal</title>
+   
+   <style>
+      :root{--green:#163c2f;
+            --dark:#102b22;
+            --cream:#f7f5ef;
+            --gold:#b69b65;
+            --text:#24352d}
+            *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{margin:0;
+         font-family:Arial,Helvetica,sans-serif;
+         color:var(--text);
+         background:var(--cream);
+         line-height:1.65}
+      a{text-decoration:none;
+         color:inherit}
+      button,input{font:inherit}
+      button{cursor:pointer}
+      .wrap{max-width:1160px;
+            margin:auto;
+            padding:0 24px}
+      .top{position:sticky;
+            top:0;
+            z-index:20;
+            background:#fffef9f5;
+            border-bottom:1px solid #ddd9cd}
+      .top .wrap{display:flex;
+            align-items:center;
+            justify-content:space-between;
+            min-height:76px;
+            gap:20px}
+      .brand{font-family:Georgia,serif;
+            font-size:23px;
+            color:var(--green);
+            font-weight:bold;
+            line-height:1.1}
+      .brand small{display:block;
+            font:10px Arial;
+            letter-spacing:3px;
+            margin-top:5px}
+      nav{display:flex;
+            gap:20px;
+            align-items:center;
+            font-size:13px}
+      nav a:hover{color:#97763f}
+      .btn{display:inline-block;
+            border:0;
+            border-radius:3px;
+            padding:14px 24px;
+            background:var(--green);
+            color:white;
+            font-weight:bold;
+            font-size:13px;
+            letter-spacing:.3px}
+      .btn:hover{background:#245b47}
+      .btn.alt{background:var(--gold);
+               color:#17251e}
+      .hero{min-height:690px;
+            display:flex;
+            align-items:center;
+            position:relative;
+            color:#fff;
+            background:linear-gradient(90deg,#0a211bd9,#0a211b44),linear-gradient(120deg,#2b5144,#778f7e)}
+      .hero.has-img{background-size:cover;
+                    background-position:center}
+      .hero .wrap{width:100%;
+                  padding-top:90px;
+                  padding-bottom:90px}
+      .eyebrow{text-transform:uppercase;
+               letter-spacing:3px;
+               font-size:11px;
+               font-weight:bold;
+               color:var(--gold)}
+      .hero .eyebrow{color:#dfc88f}
+      h1,h2,h3{font-family:Georgia,'Times New Roman',serif;
+               font-weight:normal;
+                     line-height:1.13}
+      h1{font-size:clamp(45px,6vw,83px);
+         max-width:800px;
+         margin:20px 0}
+      h2{font-size:clamp(33px,4vw,54px);
+         margin:12px 0 25px}
+      h3{font-size:27px;margin:12px 0}
+      .hero p{max-width:550px;font-size:18px;margin-bottom:30px}
+      section{padding:95px 0}
+      .intro{text-align:center;max-width:760px;margin:0 auto 55px}
+      .intro p{color:#617167}
+      .split{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+      .split p{max-width:520px}
+      .photo{min-height:370px;
+            background:linear-gradient(135deg,#d2d7ca,#9aaa9b);
+            position:relative;
+            overflow:hidden;
+            border-radius:3px}
+      .photo img{width:100%;
+               height:100%;
+               position:absolute;
+               inset:0;
+               object-fit:cover}
+      .photo .placeholder{position:absolute;
+                        inset:0;
+                        display:flex;
+                        flex-direction:column;
+                        align-items:center;
+                        justify-content:center;
+                        text-align:center;
+                        padding:25px;
+                        color:#3f584a;
+                        font-size:13px}
+      .placeholder strong{font:27px Georgia;margin-bottom:10px}
+      .soft{background:#eaece4}
+      .dark{background:var(--dark);color:white}
+      .dark p{color:#d5e0d9}
+      .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+      .card{background:white}
+      .card .photo{min-height:240px}
+      .card .body{padding:24px}
+      .card p{font-size:14px;color:#647268}
+      .feature-list{padding-left:20px}
+      .feature-list li{margin:8px 0}
+      .package{border:1px solid #cdd4ca;padding:35px;background:#fff}
+      .package ul{columns:2;gap:35px;padding-left:20px}
+      .package li{margin-bottom:12px}
+      .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+      .gallery .photo{min-height:225px;cursor:pointer}
+      .gallery .photo:hover{filter:brightness(.93)}
+      .map iframe{width:100%;height:410px;border:0;border-radius:4px}
+      .center{text-align:center}
+      .cta{padding:85px 0}
+      .cta p{max-width:620px;margin:0 auto 25px}
+      .footer{padding:30px 0;background:#0b221b;color:#cbd7d0;font-size:12px}
+      .footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+      .modal{position:fixed;inset:0;z-index:50;background:#071b14bd;display:none;align-items:center;justify-content:center;padding:20px}
+      .modal.open{display:flex}
+      .dialog{background:white;max-width:480px;width:100%;padding:35px;max-height:90vh;overflow:auto;position:relative}
+      .dialog h2{font-size:34px}
+      .close{position:absolute;right:15px;top:10px;background:none;border:0;font-size:28px}
+      .field{display:block;font-size:13px;font-weight:bold;margin:16px 0}
+      .field input{display:block;width:100%;border:1px solid #b9c4bc;padding:12px;margin-top:6px}
+      .check{display:flex;gap:10px;font-size:12px;margin:14px 0}
+      .check input{flex-shrink:0}
+      .status{font-size:13px;color:#9c372e;min-height:20px}
+      .consent{position:fixed;
+               bottom:16px;
+               left:16px;
+               right:16px;
+               z-index:60;
+               background:#fff;
+               box-shadow:0 5px 30px #0003;
+               padding:20px;
+               max-width:720px;
+               margin:auto;
+               display:flex;
+               gap:18px;
+               align-items:center;
+               font-size:13px}
+      .consent div{flex:1}
+      .consent button{white-space:nowrap}
+      .lightbox{position:fixed;inset:0;background:#000e;z-index:70;display:none;align-items:center;justify-content:center;padding:50px}
+      .lightbox.open{display:flex}
+      .lightbox img{max-width:95%;max-height:90%;object-fit:contain}
+      .lightbox button{position:absolute;right:20px;top:15px;background:none;border:0;color:white;font-size:35px}
+      .menu-toggle{display:none}
+      @media(max-width:800px){nav{display:none;position:absolute;top:76px;left:0;right:0;background:white;flex-direction:column;padding:22px}nav.open{display:flex}
+      .menu-toggle{display:block;border:0;background:none;font-size:24px;color:var(--green)}
+      .split,.cards{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .package ul{columns:1}
+      .hero{min-height:600px}section{padding:65px 0}
+      .consent{flex-wrap:wrap}
+      .photo{min-height:300px}}@media(max-width:480px){.gallery{grid-template-columns:1fr}
+      .brand{font-size:19px}}
+      .brand-logo{display:block;max-width:165px;max-height:66px;width:auto;height:auto;object-fit:contain}
+      .top .wrap{min-height:88px}
+      .cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}section{scroll-margin-top:90px}@media(max-width:800px){.cards.two{grid-template-columns:1fr}nav{top:88px}
+      .brand-logo{max-width:130px;max-height:62px}}
+      .photo img{transition:transform .35s}
+      .gallery .photo:hover img{transform:scale(1.035)}
 
-    html {
-      scroll-behavior: smooth; /* efeito de rolagem suave */
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-      color: #333;
-      line-height: 1.5;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* ====== HEADER ====== */
-    header {
-      background-color: #004b2d; /* verde escuro */
-      color: white;
-      padding: 10px 20px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header .logo {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    header .logo img {
-      height: 50px;
-    }
-
-    .menu-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: white;
-      font-size: 26px;
-    }
-
-    nav {
-      position: absolute;
-      top: 70px;
-      right: 20px;
-      background: white;
-      color: #004b2d;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      display: none;
-      flex-direction: column;
-    }
-
-    nav a {
-      padding: 10px 20px;
-      border-bottom: 1px solid #eee;
-    }
-
-    nav a:hover {
-      background: #004b2d;
-      color: #ffffff;
-    }
-
-    /* ====== HERO SECTION ====== */
-    .hero {
-      background: url('img/pousada1.JPEG') no-repeat center center/cover; /* sua imagem */
-      min-height: 100vh; /* ocupa tela toda */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      color: #ffffff;
-      padding: 40px 20px;
-    }
-
-    /* camada escura por cima da imagem */
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      bottom: 0;
-      background: rgba(0,0,0,0.5); /* ajusta aqui para mais/menos escuro */
-      z-index: 0;
-    }
-
-    .hero-overlay {
-      position: relative;
-      z-index: 2;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* centraliza tudo dentro */
-      justify-content: center;
-    }
-
-    .hero-logo {
-      width: 350px; /* aumenta o tamanho do logo */
-      height: auto;
-      display: block;
-      margin: 0 auto 20px auto; /* centraliza horizontalmente */
-    }
-
-
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-
-    .btn-hero {
-      display: inline-block;
-      background: #007b5e;
-      color: #ffffff;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn-hero:hover {
-      background: #005f46;
-    }
-
-    /* ====== BUTTON SECTIONS ====== */
-    .buttons-section {
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      text-align: center;
-    }
-
-    .buttons-section a {
-      background-color: #004b2d;
-      color: white;
-      padding: 14px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background .3s;
-    }
-
-    .buttons-section a:hover {
-      background-color: #046b3f;
-    }
-
-    /* ====== SOBRE A POUSADA ====== */
-    #sobre {
-      background: white;
-      padding: 30px 20px;
-    }
-
-    #sobre h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #004b2d;
-    }
-
-    #sobre p {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    /* Botão dentro da seção sobre */
-    
-    .btn-sobre-container {
-      text-align: center; /* centraliza conteúdo inline-block */
-      margin-top: 20px; /* espaço acima do botão */
-    }
-
-    /* estilo do botão */
-    .btn-sobre {
-      display: inline-block;
-      background-color: #007b5e; /* verde do seu site */
-      color: #ffffff;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-sobre:hover {
-      background-color: #005f46; /* mais escuro no hover */
-    }
-
-
-    /* ====== MAP SECTION ====== */
-    .map {
-      padding: 30px 20px;
-      text-align: center;
-    }
-
-    .map iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 8px;
-    }
-
-    footer {
-      background-color: #004b2d; /* mesma cor do menu, ajuste conforme seu menu */
-      color: #ffffff; /* texto branco */
-      text-align: center; /* centraliza o texto */
-      padding: 15px 10px; /* espaço interno */
-      font-size: 14px; /* opcional */
-    }
-
-    footer a {
-      color: #ffffff; /* link branco */
-      text-decoration: underline; /* sublinhado opcional */
-    }
-
-    footer a:hover {
-      color: #f3eb07; /* muda cor ao passar o mouse */
-    }
-
-
-    /* ====== RESPONSIVE ====== */
-    @media(min-width: 768px) {
-      .buttons-section {
-        flex-direction: row;
-        justify-content: center;
-      }
-      .buttons-section a {
-        width: 30%;
-      }
-    }
-  </style>
+      /* Fotos sem cortes: preserva a imagem inteira, inclusive rostos e peixes. */
+      .photo{background:#e4e9e1}
+      .photo img{object-fit:contain;object-position:center center}
+      .card .photo{height:300px;min-height:300px}
+      .gallery .photo{height:255px;min-height:255px}
+      .gallery .photo:hover img{transform:none}
+      @media(max-width:800px){.card .photo{height:280px;min-height:280px}.gallery .photo{height:260px;min-height:260px}}
+   </style>
 </head>
+
 <body>
-  <body id="topo">
+<header class="top">
+   <div class="wrap">
+      <a class="brand" href="#inicio" aria-label="Casa Pantaneira — início">
+         <img src="img/Logo Pousada Casa Pantaneira.PNG" alt="Logo original da Pousada Casa Pantaneira" class="brand-logo"></a>
+         <button class="menu-toggle" aria-label="Abrir menu" id="menu">☰</button>
+         <nav id="nav">
+            <a href="#pesca">Pesca esportiva</a>
+            <a href="#modalidades">Duplas e grupos</a>
+            <a href="#estrutura">Estrutura e quartos</a>
+            <a href="#sabores">Gastronomia</a>
+            <a href="#aves">Birdwatching</a>
+            <a href="#pacotes">Pacotes</a>
+            <a href="#galeria">Galeria</a>
+            <a href="#localizacao">Como chegar</a>
+            <button class="btn reserve">Reservar</button>
+         </nav>
+      </div>
+   </header>
+<main>
+   <div id="inicio" class="hero" data-bg="capa">
+      <div class="wrap">
+         <span class="eyebrow">Rio São Lourenço · Mato Grosso</span>
+         <h1>A pescaria começa muito antes do primeiro arremesso.</h1>
+         <p>Viva a pesca esportiva no Pantanal, com a hospitalidade, os sabores e a natureza que fazem cada viagem valer a pena.</p>
+         <button class="btn alt reserve">Reservar minha pescaria</button>
+      </div>
+   </div>
+   
+   <section id="pesca">
+      <div class="wrap split">
+         <div>
+            <span class="eyebrow">A experiência</span>
+            <h2>Pesca esportiva no coração do Pantanal</h2>
+            <p>O Rio São Lourenço é o cenário para dias de pesca, encontros e histórias que continuam depois da viagem. Aqui, a pescaria é o centro da experiência.</p>
+            <p>Barco, motor, combustível, piloteiro e iscas previstas no pacote: uma estrutura organizada para você aproveitar os dias no rio.</p>
+            <button class="btn reserve">Planejar minha pescaria</button>
+         </div>
+         <div class="photo" data-photo="pesca"></div>
+      </div>
+   </section>
 
-  <!-- HEADER -->
-  <header>
-    <a href="#topo">
-    <img src="img/CASA PANTANEIRA (5).png" alt="Pousada Casa Pantaneira" class="logo">
-  </a>  
+   <section id="modalidades" class="soft">
+      <div class="wrap">
+         <div class="intro">
+            <span class="eyebrow">Escolha sua experiência</span>
+            <h2>Como você quer viver sua pescaria?</h2>
+            <p>Seja em dupla ou com seu grupo, conheça as opções e consulte as condições para sua viagem.</p>
+         </div>
+         <div class="cards two">
+            <article class="card" id="dupla">
+               <div class="photo" data-photo="dupla"></div>
+               <div class="body">
+                  <h3>Pescaria em dupla</h3>
+                  <p>Para dois pescadores que querem aproveitar os dias no Rio São Lourenço, com barco, motor e piloteiro conforme o pacote contratado.</p>
+                  <button class="btn reserve" data-interesse="Pescaria em dupla">Consultar pescaria em dupla</button>
+               </div>
+            </article>
+            <article class="card" id="grupos">
+               <div class="photo" data-photo="grupos"></div>
+               <div class="body">
+                  <h3>Pescaria em grupo</h3>
+                  <p>Para amigos, famílias e grupos que desejam compartilhar a experiência da pesca esportiva no Pantanal. A estrutura e a disponibilidade são confirmadas conforme o tamanho do grupo.</p>
+                  <button class="btn reserve" data-interesse="Pescaria em grupo">Consultar pescaria em grupo</button>
+               </div>
+            </article>
+         </div>
+      </div>
+   </section>
 
-    <button class="menu-btn">&#9776;</button>
-    <nav>
-      <a href="#sobre">Sobre a Pousada</a>
-      <a href="https://wa.me/5566999181900" target="_blank">Contato WhatsApp</a>
-    </nav>
-  </header>
+   <section id="estrutura" class="soft">
+      <div class="wrap">
+         <div class="intro">
+            <span class="eyebrow">Conforto e acolhimento</span>
+            <h2>Uma estrutura para descansar e aproveitar</h2>
+            <p>Depois de um dia de pesca, um lugar para descansar, conversar e preparar a próxima aventura.</p>
+         </div>
+         <div class="cards">
+            <article class="card">
+               <div class="photo" data-photo="quartos"></div>
+               <div class="body">
+                  <h3>Área externa</h3>
+                  <p>Conheça os espaços externos da Casa Pantaneira. Os quartos contam com ar-condicionado e frigobar; adicionaremos suas fotos assim que estiverem disponíveis.</p>
+               </div>
+            </article>
+            <article class="card">
+               <div class="photo" data-photo="convivencia"></div>
+               <div class="body">
+                  <h3>Convivência</h3>
+                  <p>Espaços para reunir o grupo e compartilhar as histórias do dia.</p>
+               </div>
+            </article>
+            <article class="card">
+               <div class="photo" data-photo="barcos"></div>
+               <div class="body">
+                  <h3>Mais ambientes</h3>
+                  <p>Outros ângulos da estrutura da pousada. As embarcações e o apoio à pesca fazem parte da experiência contratada.</p>
+               </div>
+            </article>
+         </div>
+         <p class="center" style="margin-top:30px">
+            <button class="btn reserve">Consultar disponibilidade</button>
+         </p>
+      </div>
+   </section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <img src="img/CASA PANTANEIRA (5).png" alt="Logo Pousada Casa Pantaneira" class="hero-logo">
-      <p>O lugar ideal para a sua pescaria no Pantanal</p>
-      <a href="https://wa.me/5566999181900" class="btn-hero">Agendar pescaria pelo WhatsApp</a>
-    </div>
-  </section>
+   <section id="sabores">
+      <div class="wrap split">
+         <div class="photo" data-photo="comida"></div>
+         <div>
+            <span class="eyebrow">Sabores da nossa terra</span>
+            <h2>Comida raiz, servida com hospitalidade</h2>
+            <p>O sabor da cozinha pantaneira também faz parte da viagem. Café da manhã para começar bem, almoço servido no rio e jantar para encerrar o dia.</p>
+            <p>Comida de verdade, mesa compartilhada e aquele momento de contar as melhores histórias da pescaria.</p>
+            <button class="btn reserve">Quero viver essa experiência</button>
+         </div>
+      </div>
+   </section>
 
+   <section id="aves" class="soft">
+      <div class="wrap split">
+         <div><span class="eyebrow">Natureza e contemplação</span>
+            <h2>Birdwatching no Pantanal</h2>
+            <p>Para quem gosta de observar aves, fotografar a natureza e descobrir os sons e as paisagens do Pantanal, a Casa Pantaneira pode ser um ponto de apoio para uma experiência especial.</p>
+            <p>Consulte nossa equipe sobre hospedagem e possibilidades de observação de aves na região. Atividades guiadas e serviços específicos dependem de confirmação prévia.</p>
+            <button class="btn reserve">Consultar hospedagem</button>
+         </div>
+         <div class="photo" data-photo="aves"></div>
+      </div>
+   </section>
 
-  <!-- BUTTONS -->
-  <section class="buttons-section">
-    <a href="https://drive.google.com/drive/folders/1zZk1u_u4B3wB5zsRNcGbLLRwMSVZRau6?usp=sharing" target="_blank">Galeria da Estrutura</a>
-    <a href="https://drive.google.com/drive/folders/1Jfq3u3uEdpSt5DoZO4ogOt63orEp0nOL?usp=sharing" target="_blank">Galeria de Pescarias</a>
-  </section>
+   <section id="pacotes" class="soft">
+      <div class="wrap">
+         <div class="intro">
+            <span class="eyebrow">Sua viagem</span>
+            <h2>Pacotes de pesca</h2>
+            <p>Uma experiência com serviços essenciais incluídos. Consulte nossa equipe para montar sua reserva e verificar datas disponíveis.</p>
+         </div>
+         <div class="package">
+            <h3>O que está incluso no pacote All Inclusive</h3>
+            <ul>
+               <li>Hospedagem em quarto com ar-condicionado e frigobar</li>
+               <li>Café da manhã</li>
+               <li>Almoço servido no rio</li>
+               <li>Jantar e porção</li>
+               <li>Barco e motor</li>
+               <li>Combustível para a pescaria</li>
+               <li>Piloteiro</li>
+               <li>Iscas, exceto minhocuçu</li>
+               <li>Água, refrigerantes e cerveja conforme condições do grupo</li>
+               <li>Acesso à piscina</li>
+            </ul>
+            <p><strong>Não inclusos:</strong> minhocuçu e bebidas destiladas. A proposta final confirma as condições e os dias contratados de pesca.</p>
+            <button class="btn reserve">Solicitar meu pacote</button>
+         </div>
+      </div>
+   </section>
 
-  <!-- SOBRE -->
-  <section id="sobre">
-    <h2>Sobre a Pousada</h2>
-    <p>
-      Somos uma pousada de pesca localizada no <strong>Rio São Lourenço</strong>, no Mato Grosso.
-      Oferecemos <strong>comidas típicas</strong> da região e um <strong>serviço completo de pesca</strong>
-      para que você aproveite o melhor do Pantanal com conforto e tradição.
-    </p>
-    <div class="btn-sobre-container">
-      <a href="https://wa.me/5566999181900" class="btn-sobre">Agendar pescaria pelo WhatsApp</a>
-  </div>
-  </section>
+   <section id="galeria">
+      <div class="wrap">
+         <div class="intro"><span class="eyebrow">Momentos reais</span>
+            <h2>Um pouco da Casa Pantaneira</h2>
+            <p>Explore nossa galeria. Fotografias reais da nossa pousada, das pescarias e dos sabores do Pantanal.</p>
+         </div>
+         <div class="gallery">
+            <div class="photo" data-photo="galeria1"></div>
+            <div class="photo" data-photo="galeria2"></div>
+            <div class="photo" data-photo="galeria3"></div>
+            <div class="photo" data-photo="galeria4"></div>
+            <div class="photo" data-photo="galeria5"></div>
+            <div class="photo" data-photo="galeria6"></div>
+            <div class="photo" data-photo="galeria7"></div>
+            <div class="photo" data-photo="galeria8"></div>
+            <div class="photo" data-photo="galeria9"></div>
+         </div>
+      </div>
+   </section>
 
-  <!-- MAP -->
-  <section class="map">
-    <h2>Como chegar</h2>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.813263111432!2d-55.5516988!3d-16.736166699999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93829faf09fae3af%3A0x2e067ada6a259196!2sPousada%20Casa%20Pantaneira!5e0!3m2!1spt-BR!2sbr!4v1758156069373!5m2!1spt-BR!2sbr" 
-        width="600"
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </section>
+   <section id="localizacao" class="soft">
+      <div class="wrap">
+         <div class="intro"><span class="eyebrow">Onde estamos</span>
+            <h2>Seu caminho até o Pantanal</h2>
+            <p>Estamos na região do Rio São Lourenço, em Mato Grosso. Consulte nossa equipe para orientações de acesso antes de viajar.</p>
+         </div>
+         <div class="map">
+            <iframe title="Mapa da Pousada Casa Pantaneira" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=-16.736133,-55.551708&z=13&output=embed"></iframe>
+         </div>
+      </div>
+   </section>
 
-  <footer>
-    Todos os direitos reservados a Pousada Casa Pantaneira © 2025 <br>
-    Site desenvolvido por 
-    <a href="https://www.leadsmidiasdigitais.com" target="_blank">
-      Leads Mídias Digitais
-    </a>
-  </footer>
+   <section class="dark cta center">
+      <div class="wrap">
+         <span class="eyebrow">A próxima história pode ser sua</span>
+         <h2>O Pantanal está esperando por você.</h2>
+         <p>Escolha suas datas e converse com nossa equipe para planejar sua pescaria.</p>
+         <button class="btn alt reserve">Reservar minha pescaria</button>
+      </div>
+   </section>
+</main>
 
-  <script>
-    // Toggle menu hambúrguer
-    const menuBtn = document.querySelector('.menu-btn');
-    const nav = document.querySelector('nav');
+   <footer class="footer">
+      <div class="wrap">
+         <span>© <span id="year"></span> Pousada Casa Pantaneira · Rio São Lourenço, MT</span>
+         <span>Pesca esportiva · Hospitalidade pantaneira</span>
+      </div>
+   </footer>
 
-    menuBtn.addEventListener('click', () => {
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
+   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
+      <div class="dialog">
+         <button class="close" id="close" aria-label="Fechar">×</button>
+         <span class="eyebrow">Sua pescaria começa aqui</span>
+         <h2 id="form-title">Vamos conversar?</h2>
+         <p>Preencha seus dados para solicitar atendimento pelo WhatsApp. O cadastro precisa ser confirmado antes do redirecionamento.</p>
+         <form id="lead-form">
+            <label class="field">Nome completo *<input name="nome" required autocomplete="name" maxlength="120"></label>
+            <label class="field">E-mail *<input type="email" name="email" required autocomplete="email" maxlength="200"></label>
+            <label class="field">WhatsApp com DDD *<input name="whatsapp" type="tel" required autocomplete="tel" inputmode="tel" minlength="10" maxlength="20"></label>
+            <label class="check">
+               <input type="checkbox" required name="privacidade">
+               <span>Concordo com o uso dos meus dados para receber o atendimento solicitado pelo WhatsApp. *</span>
+            </label>
+            <label class="check">
+               <input type="checkbox" name="marketing">
+               <span>Quero receber novidades e ofertas por e-mail ou WhatsApp (opcional).</span>
+            </label>
+            <p class="status" id="status" role="status"></p>
+            <button class="btn" type="submit" id="submit">Continuar para o WhatsApp</button>
+         </form>
+      </div>
+   </div>
 
-    // Fechar menu ao clicar em um link (melhor UX)
-    const navLinks = nav.querySelectorAll('a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        nav.style.display = 'none';
-      });
-    });
-  </script>
+   <div class="lightbox" id="lightbox">
+      <button id="lightbox-close" aria-label="Fechar imagem">×</button>
+      <img id="lightbox-img" alt="Fotografia da Casa Pantaneira">
+   </div>
 
+   <div class="consent" id="consent">
+      <div>
+         <strong>Privacidade e cookies</strong>
+         <br>Usamos tecnologias de medição do Google e da Meta somente com sua autorização. Você pode continuar sem aceitar.
+      </div>
+      <button class="btn" id="accept">Aceitar</button>
+      <button class="btn" style="background:#66756c" id="reject">Recusar</button>
+   </div>
+<script>
+/* =============================================================
+   EDITE AQUI AS FOTOS. Coloque os arquivos na pasta img/.
+   Exemplo: capa: 'img/minha-foto-da-pousada.jpg'
+   Deixe '' para mostrar o espaço reservado.
+   ============================================================= */
+const FOTOS = {
+  capa: 'img/Estrutura_externa_Pousada_Casa_Pantaneira.jpg',
+  pesca: 'img/Pescador_peixe_pintado.jpg',
+  dupla: 'img/Casal_pescador_peixe_jau.JPEG',
+  grupos: 'img/Grupo_Pesca_Esportiva_Pousada_Casa_Pantaneira.JPEG',
+  quartos: 'img/Estrutura_externa_Pousada_Casa_Pantaneira.jpg',
+  convivencia: 'img/Estrutura_externa_Pousada_Casa_Pantaneira_1.jpg',
+  barcos: 'img/Estrutura_externa_Pousada_Casa_Pantaneira_2.JPEG',
+  comida: 'img/Alimentacao.JPEG',
+  aves: 'img/Tuiuiu_bird.JPEG',
+  galeria1: 'img/Fachadinha_com_Arara_Sujeira_atração_da_Pousada_Casa_Pantaneira.JPEG',
+  galeria2: 'img/Pescadora_peixe_caxara.JPEG',
+  galeria3: 'img/Grupo_Pesca_Esportiva_Pousada_Casa_Pantaneira_1.JPEG',
+  galeria4: 'img/Pescador_peixe_pacu.JPG',
+  galeria5: 'img/Mutum_bird.JPEG',
+  galeria6: 'img/Pai_e_Filho_pescador_jau_Pousada_Casa_Pantaneira.JPEG',
+  galeria7: 'img/Grupo_Pesca_Esportiva_Pousada_Casa_Pantaneira_6.JPEG',
+  galeria8: 'img/Pescadora_peixe_jau.JPEG',
+  galeria9: 'img/Estrutura_externa_Pousada_Casa_Pantaneira_2.JPEG'
+};
+/* =============================================================
+   CONFIGURAÇÃO DE LEADS: informe a URL HTTPS de um serviço
+   (ex.: Apps Script / backend) que receba POST JSON e retorne
+   JSON {"ok":true} SOMENTE depois de salvar os dados.
+   Sem isso, o formulário NÃO redireciona para evitar perder leads.
+   ============================================================= */
+const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxxQMvFu5Tx2DDKwCETnedFo0xoTOgMhdyIpzk6tG6HsKo0wG7HoCkrufSoOI2ol1m6/exec';
+const WHATSAPP_DESTINO = '5551997468994';
+const GTM_ID = 'GTM-WNDQP3Q4';
+const META_PIXEL_ID = '1815501306368920';
+const labels={capa:'Foto principal da pousada',
+               pesca:'Foto da pesca esportiva',
+               dupla:'Foto de pescaria em dupla',
+               grupos:'Foto de pescaria em grupo',
+               quartos:'Fotografia da área externa da pousada',
+               convivencia:'Foto da estrutura',
+               barcos:'Fotografia dos ambientes externos da pousada',
+               comida:'Foto da comida pantaneira',
+               aves:'Foto de aves do Pantanal',
+               galeria1:'Galeria · Foto 1',
+               galeria2:'Galeria · Foto 2',
+               galeria3:'Galeria · Foto 3',
+               galeria4:'Galeria · Foto 4',
+               galeria5:'Galeria · Foto 5',
+               galeria6:'Galeria · Foto 6',
+               galeria7:'Galeria · Estrutura 1',
+               galeria8:'Galeria · Estrutura 2',
+               galeria9:'Galeria · Estrutura 3'};
+function addImage(el,key){
+         const src=FOTOS[key];
+         if(src){if(key==='capa'){el.style.backgroundImage=`linear-gradient(90deg,#0a211bd9,#0a211b44),
+            url("${src.replaceAll('"','%22')}")`;
+            el.classList.add('has-img')}
+            else{const im=document.createElement('img');
+            im.src=src;
+            im.alt=labels[key];
+            im.loading='lazy';
+            im.onerror=()=>{im.remove();
+               placeholder(el,key)};
+               el.append(im);
+               if(key.startsWith('galeria')){el.tabIndex=0;
+                  el.setAttribute('role','button');
+                  el.setAttribute('aria-label','Ampliar '+labels[key]);
+                  el.addEventListener('click',()=>showLightbox(src));
+                  el.addEventListener('keydown',e=>{if(e.key==='Enter')showLightbox(src)})}}}
+                  else if(key!=='capa')placeholder(el,key)}
+function placeholder(el,key){
+         const d=document
+         .createElement('div');d.className='placeholder';d.innerHTML='<strong>Casa Pantaneira</strong><span>'+labels[key]+'<br>Adicione a imagem na configuração FOTOS</span>';el.append(d)}
+         document.querySelectorAll('[data-photo]').forEach(el=>addImage(el,el.dataset.photo));
+         addImage(document.querySelector('[data-bg]'),'capa');document.getElementById('year').textContent=new Date().getFullYear();
+         document.getElementById('menu').onclick=()=>document.getElementById('nav').classList.toggle('open');document.querySelectorAll('nav a')
+         .forEach(a=>a.onclick=()=>document.getElementById('nav').classList.remove('open'));
+         const modal=document.getElementById('modal');let interesseAtual="Consulta de pescaria";
+            document.querySelectorAll('.reserve').forEach(b=>b.onclick=()=>{interesseAtual=b.dataset.interesse||(b.closest("#aves")?"Birdwatching":"Consulta de pescaria");
+            modal.classList.add('open');
+            document.getElementById('status').textContent='';
+            document.getElementById('nav').classList.remove('open')});
+            document.getElementById('close').onclick=()=>modal.classList.remove('open');
+            modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+      function showLightbox(src){document.getElementById('lightbox-img').src=src;
+         document.getElementById('lightbox').classList.add('open')}
+         document.getElementById('lightbox-close').onclick=()=>document.getElementById('lightbox').classList.remove('open');
+         document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');
+         document.getElementById('lightbox').classList.remove('open')}});
+
+/* Tags carregadas apenas após consentimento. Não configurar o mesmo Pixel novamente dentro do GTM. */
+      function loadTags(){
+         if(window.__tagsLoaded)return;
+         window.__tagsLoaded=true;
+         window.dataLayer=window.dataLayer||[];
+         window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
+         const g=document.createElement('script');g.async=true;g.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(GTM_ID);
+         document.head.append(g);
+         // GA4: inicializado somente após o consentimento de métricas.
+         // Não crie outra tag de configuração GA4 no GTM para evitar page_view duplicado.
+         window.dataLayer=window.dataLayer||[];
+         window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
+         window.gtag('js',new Date());
+         window.gtag('config','G-R7V92PR0NN');
+         const ga4=document.createElement('script');
+         ga4.async=true;
+         ga4.src='https://www.googletagmanager.com/gtag/js?id=G-R7V92PR0NN';
+         document.head.append(ga4);
+         !function(f,b,e,v,n,t,s){
+            if(f.fbq)
+            return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+               if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b
+                  .createElement(e);t.async=!0;t.src=v;s=b
+                  .getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init',META_PIXEL_ID);
+                  fbq('track','PageView')}
+         const consent=document
+             .getElementById('consent');
+             function setConsent(v){
+                  localStorage.setItem('cp_tracking_consent',v);
+                  consent.style.display='none';
+                  if(v==='yes')loadTags()}document
+                     .getElementById('accept')
+                     .onclick=()=>setConsent('yes');document
+                        .getElementById('reject')
+                        .onclick=()=>setConsent('no');
+                  const savedConsent=localStorage
+                     .getItem('cp_tracking_consent');
+                     if(savedConsent){consent.style.display='none';
+                     if(savedConsent==='yes')loadTags()}
+         const form=document.getElementById('lead-form');
+         let enviandoLead=false;
+         form.addEventListener('submit',e=>{
+            e.preventDefault();
+            if(enviandoLead)return;
+            const status=document.getElementById('status');
+            const btn=document.getElementById('submit');
+            const dados={
+               nome:form.elements['nome'].value.trim(),
+               email:form.elements['email'].value.trim(),
+               whatsapp:form.elements['whatsapp'].value.trim(),
+               privacidade:form.elements['privacidade'].checked,
+               marketing:form.elements['marketing'].checked,
+               interesse:interesseAtual,
+               origem:'site-casa-pantaneira',
+               pagina:location.href,
+               utm_source:new URLSearchParams(location.search).get('utm_source')||'',
+               utm_campaign:new URLSearchParams(location.search).get('utm_campaign')||'',
+               utm_medium:new URLSearchParams(location.search).get('utm_medium')||'',
+               utm_content:new URLSearchParams(location.search).get('utm_content')||''
+            };
+            if(!dados.privacidade || !dados.nome || !dados.email || dados.whatsapp.replace(/\D/g,'').length<10){
+               status.textContent='Confira os dados e o aceite de privacidade.';return;
+            }
+            enviandoLead=true;btn.disabled=true;
+            status.textContent='Registrando seu contato...';
+            const requestId=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2));
+            const frame=document.createElement('iframe');
+            frame.name='cp-lead-'+requestId.replace(/[^a-zA-Z0-9-]/g,'');
+            frame.style.display='none';
+            frame.setAttribute('title','Envio do cadastro');
+            document.body.appendChild(frame);
+            const postForm=document.createElement('form');
+            postForm.method='POST';postForm.action=LEAD_ENDPOINT;postForm.target=frame.name;
+            postForm.style.display='none';
+            const campos={...dados,privacidade:String(dados.privacidade),marketing:String(dados.marketing),requestId};
+            for(const [key,value] of Object.entries(campos)){
+               const input=document.createElement('input');input.type='hidden';input.name=key;input.value=value;
+               postForm.appendChild(input);
+            }
+            document.body.appendChild(postForm);
+            // O HTML Service do Google usa iframes internos; postMessage pode não chegar ao pai.
+            // Consultamos o ID de envio via JSONP (GET) até o servidor confirmar a gravação.
+            let terminado=false, tentativas=0, consultaAtual=null;
+            const callbackName='cpLeadCallback_'+requestId.replace(/-/g,'_');
+            const timeout=setTimeout(()=>encerrar(false),20000);
+            function limparConsulta(){
+               if(consultaAtual){consultaAtual.remove();consultaAtual=null;}
+               try{delete window[callbackName];}catch(e){window[callbackName]=undefined;}
+            }
+            function encerrar(sucesso,idLead){
+               if(terminado)return;
+               terminado=true;clearTimeout(timeout);limparConsulta();
+               postForm.remove();setTimeout(()=>frame.remove(),1000);
+               if(!sucesso){
+                  enviandoLead=false;btn.disabled=false;
+                  status.textContent='Não conseguimos confirmar o cadastro. Confira a planilha antes de reenviar.';
+                  return;
+               }
+               status.textContent='Cadastro confirmado! Abrindo WhatsApp...';
+               if(window.__tagsLoaded){
+                  window.dataLayer?.push({event:'lead_registrado',interesse:dados.interesse,lead_id:idLead});
+                  if(typeof window.gtag==='function')window.gtag('event','generate_lead',{method:'website_form',interesse:dados.interesse});
+                  if(typeof window.fbq==='function')window.fbq('track','Lead');
+               }
+               const msg=`Olá! Meu nome é ${dados.nome}. Preenchi o formulário do site e gostaria de informações sobre ${interesseAtual} na Casa Pantaneira.`;
+               location.assign('https://wa.me/'+WHATSAPP_DESTINO+'?text='+encodeURIComponent(msg));
+            }
+            function consultar(){
+               if(terminado)return;
+               tentativas++;
+               limparConsulta();
+               window[callbackName]=res=>{
+                  if(terminado || res.requestId!==requestId)return;
+                  if(res.ok===true && res.idLead){encerrar(true,res.idLead);return;}
+                  if(tentativas<12)setTimeout(consultar,1100);
+               };
+               const script=document.createElement('script');
+               consultaAtual=script;
+               script.onerror=()=>{if(!terminado && tentativas<12)setTimeout(consultar,1100);};
+               script.src=LEAD_ENDPOINT+'?requestId='+encodeURIComponent(requestId)+'&callback='+encodeURIComponent(callbackName)+'&t='+Date.now();
+               document.body.appendChild(script);
+            }
+            postForm.submit();
+            setTimeout(consultar,900);
+         });
+</script>
 </body>
 </html>
